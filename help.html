@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Can I Help</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #faf7dd;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 30px;
+            font-size: 28px;
+            color: #2b3b94;
+            font-weight: 700;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 40px;
+        }
+
+        .option-box {
+            width: 300px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #2b3b94;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .form-container {
+            width: 400px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            text-align: left;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .submit-btn {
+            background: #f4a100;
+            width: 100%;
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            background: #ff9800;
+        }
+    </style>
+
+    <script>
+        function showForm(type) {
+            document.getElementById("donateForm").style.display = "none";
+            document.getElementById("volunteerForm").style.display = "none";
+
+            if (type === "donate") {
+                document.getElementById("donateForm").style.display = "block";
+            } else {
+                document.getElementById("volunteerForm").style.display = "block";
+            }
+
+            window.scrollTo({ top: 500, behavior: 'smooth' });
+        }
+    </script>
+
+</head>
+<body>
+
+    <h1>How Can I Help?</h1>
+
+    <div class="options">
+        <div class="option-box">
+            <p>Your love can change everything…</p>
+            <button onclick="showForm('donate')">Donate Now</button>
+        </div>
+
+        <div class="option-box">
+            <p>Walk. Play. Love. Repeat.</p>
+            <button onclick="showForm('volunteer')">Become a Volunteer Today!</button>
+        </div>
+    </div>
+
+    <!-- DONATE FORM -->
+    <div class="form-container" id="donateForm">
+        <h2>Donate Form</h2>
+        <form>
+            <label>Nama Lengkap:</label>
+            <input type="text" required>
+
+            <label>Email:</label>
+            <input type="email" required>
+
+            <label>Jumlah Donasi (Rp):</label>
+            <input type="number" required>
+
+            <label>Metode Pembayaran:</label>
+            <select required>
+                <option>Transfer Bank</option>
+                <option>E-Wallet</option>
+                <option>Kartu Kredit</option>
+            </select>
+
+            <button class="submit-btn">Submit Donasi</button>
+        </form>
+    </div>
+
+    <!-- VOLUNTEER FORM -->
+    <div class="form-container" id="volunteerForm">
+        <h2>Volunteer Registration</h2>
+        <form>
+            <label>Nama Lengkap:</label>
+            <input type="text" required>
+
+            <label>Email:</label>
+            <input type="email" required>
+
+            <label>No. Telepon:</label>
+            <input type="text" required>
+
+            <label>Pilih Jenis Kegiatan:</label>
+            <select required>
+                <option>Membersihkan Kandang</option>
+                <option>Menemani Hewan</option>
+                <option>Memandikan Hewan</option>
+                <option>Acara Penggalangan Dana</option>
+            </select>
+
+            <label>Pesan Tambahan:</label>
+            <textarea rows="3"></textarea>
+
+            <button class="submit-btn">Daftar Volunteer</button>
+        </form>
+    </div>
+
+</body>
+</html>

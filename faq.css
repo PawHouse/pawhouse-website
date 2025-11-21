@@ -1,0 +1,196 @@
+/* Warna yang digunakan */
+:root {
+    --color-bg-light: #fff8e8; /* Kuning pucat untuk latar belakang */
+    --color-primary: #34495e; /* Teks utama (Navy Blue) */
+    --color-accent-blue: #3b82f6; /* Biru untuk judul dan panah */
+    --color-text-sub: #6b7280; /* Teks subtitle/jawaban (Abu-abu) */
+    --color-button-orange: #ffb703; /* Kuning/Orange tombol */
+    --color-card-bg: #f3f4f6; /* Latar belakang card pertanyaan yang terbuka */
+    --color-white: #ffffff;
+}
+
+/* Reset dan Pengaturan Dasar */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-bg-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* --- Wrapper Halaman FAQ --- */
+.page-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+}
+
+/* --- Header Khusus Halaman FAQ (Opsional) --- */
+.faq-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.back-to-home-link {
+    color: var(--color-accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+}
+
+/* --- Container Utama Konten FAQ --- */
+
+.faq-container {
+    padding: 20px 0;
+}
+
+.header-section {
+    margin-bottom: 40px;
+}
+
+.main-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-accent-blue);
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-sub);
+    margin-top: 5px;
+    max-width: 500px;
+}
+
+/* --- Konten (Ilustrasi dan Pertanyaan) --- */
+
+.content-section {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.illustration-area {
+    flex: 1;
+    max-width: 45%;
+    flex-shrink: 0; 
+}
+
+.faq-illustration {
+    width: 100%;
+    height: auto;
+}
+
+.questions-area {
+    flex: 1;
+    max-width: 55%;
+}
+
+/* --- Gaya Item Pertanyaan --- */
+
+.faq-item {
+    background-color: var(--color-white);
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Gaya khusus untuk item yang sedang terbuka/expanded */
+.faq-item.expanded {
+    background-color: var(--color-card-bg); 
+    padding-bottom: 10px; 
+}
+
+.question-text {
+    font-weight: 600;
+    color: var(--color-primary);
+    flex-grow: 1;
+}
+
+.answer-text {
+    width: 100%;
+    font-size: 0.9rem;
+    color: var(--color-text-sub);
+    margin-top: 10px;
+    line-height: 1.5;
+    padding: 0 20px 5px 20px; 
+}
+
+.arrow {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--color-accent-blue);
+    margin-left: 10px; 
+}
+
+.arrow.up-arrow {
+    transform: rotate(-90deg); 
+    display: inline-block;
+}
+
+/* --- Tombol Navigasi Bawah --- */
+
+.navigation-buttons {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.nav-button {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-transform: uppercase;
+    color: var(--color-white);
+    background-color: var(--color-button-orange);
+}
+
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    .content-section {
+        flex-direction: column;
+    }
+
+    .illustration-area,
+    .questions-area {
+        max-width: 100%;
+    }
+
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .navigation-buttons {
+        padding: 0;
+    }
+}

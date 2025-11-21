@@ -1,0 +1,197 @@
+/* === GLOBAL === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #a18cff, #6f5dff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* === WRAPPER === */
+.adoption-page-wrapper {
+    width: 100%;
+    max-width: 780px; /* ❗ diperkecil (dari 950px) */
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* === HEADER === */
+.adopt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 30px;  /* ❗ diperkecil */
+    border-bottom: 1px solid #eaeaea;
+}
+
+.back-home-link {
+    text-decoration: none;
+    font-size: 14px;
+    color: #6f5dff;
+    font-weight: 600;
+}
+
+.logo {
+    font-size: 19px; /* ❗ sedikit lebih kecil */
+    font-weight: 700;
+    color: #6f5dff;
+}
+
+/* === CONTENT === */
+.adoption-form-container {
+    padding: 30px; /* ❗ lebih kecil */
+}
+
+.main-title {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* === FORM === */
+.adopt-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px; /* ❗ gap diperkecil */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+label {
+    font-size: 13.5px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #555;
+}
+
+input, select, textarea {
+    padding: 11px 13px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #6f5dff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(111,93,255,0.2);
+}
+
+/* === CHECKBOX === */
+.checkbox-group {
+    display: flex;
+    gap: 10px;
+}
+
+.checkbox-group input {
+    width: 18px;
+    height: 18px;
+}
+
+/* === BUTTON === */
+.submit-btn {
+    grid-column: span 2;
+    padding: 13px;
+    background: #6f5dff;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.submit-btn:hover {
+    background: #5848e6;
+}
+
+/* === FOOTER === */
+.adopt-footer {
+    text-align: center;
+    padding: 12px;
+    color: #777;
+    font-size: 13px;
+    border-top: 1px solid #eaeaea;
+}
+
+/* ----------------------------------------------------------- */
+/*          RESPONSIVE BREAKPOINTS (PERBAIKAN BESAR)           */
+/* ----------------------------------------------------------- */
+
+/* Tablet */
+@media (max-width: 820px) {
+    .adoption-page-wrapper {
+        max-width: 90%;
+    }
+
+    .adopt-form {
+        grid-template-columns: 1fr; /* ❗ jadi satu kolom */
+    }
+
+    .form-group.full-width,
+    .submit-btn {
+        grid-column: span 1;
+    }
+}
+
+/* HP Lebar Sedang */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .adoption-page-wrapper {
+        border-radius: 14px;
+    }
+
+    .adopt-header,
+    .adoption-form-container {
+        padding: 20px;
+    }
+
+    .main-title {
+        font-size: 22px;
+    }
+}
+
+/* HP Kecil */
+@media (max-width: 400px) {
+    .main-title {
+        font-size: 20px;
+    }
+
+    input, select, textarea {
+        font-size: 13px;
+        padding: 10px;
+    }
+}

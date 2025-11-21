@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lihat Data Adopsi</title>
+
+    <!-- Memanggil CSS eksternal -->
+    <link rel="stylesheet" href="view-adoption-data.css">
+</head>
+<body>
+
+    <h1>Data Pengajuan Adopsi</h1>
+
+    <button class="btn-clear" onclick="clearData()">Hapus Semua Data</button>
+
+    <div id="output"></div>
+
+    <script>
+        function loadData() {
+            const data = JSON.parse(localStorage.getItem("adoption_submissions")) || [];
+            const output = document.getElementById("output");
+
+            if (data.length === 0) {
+                output.innerHTML = `<p class="empty">Belum ada data adopsi yang masuk.</p>`;
+                return;
+            }
+
+            let table = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>No. HP</th>
+                            <th>Alamat</th>
+                            <th>Alasan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            data.forEach(item => {
+                table += `
+                    <tr>
+                        <td data-label="Nama">${item.nama || "-"}</td>
+                        <td data-label="Email">${item.email || "-"}</td>
+                        <td data-label="No. HP">${item.telepon || "-"}</td>
+                        <td data-label="Alamat">${item.alamat || "-"}</td>
+                        <td data-label="Alasan">${item.alasan || "-"}</td>
+                    </tr>
+                `;
+            });
+
+            table += `
+                    </tbody>
+                </table>
+            `;
+
+            output.innerHTML = table;
+        }
+
+        function clearData() {
+            if (confirm("Yakin ingin menghapus semua data?")) {
+                localStorage.removeItem("adoption_submissions");
+                loadData();
+            }
+        }
+
+        loadData();
+    </script>
+
+</body>
+</html>

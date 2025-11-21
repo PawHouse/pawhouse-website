@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt Us! - PawHouse Adoption Form</title>
+    <link rel="stylesheet" href="adopt-form.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+    ...
+    </footer>
+</div>
+
+<script>
+document.querySelector(".adopt-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const nama = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const telepon = document.getElementById("phone").value;
+    const alamat = document.getElementById("residence").value;
+    const alasan = document.getElementById("experience").value;
+
+    let submissions = JSON.parse(localStorage.getItem("adoption_submissions")) || [];
+
+    submissions.push({
+        nama: nama,
+        email: email,
+        telepon: telepon,
+        alamat: alamat,
+        alasan: alasan
+    });
+
+    localStorage.setItem("adoption_submissions", JSON.stringify(submissions));
+
+    alert("Form adopsi berhasil dikirim!");
+    document.querySelector(".adopt-form").reset();
+});
+</script>
+<script>
+document.querySelector(".adopt-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Mencegah reload halaman
+
+    // Ambil value dari form
+    const newData = {
+        nama: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        telepon: document.getElementById("phone").value,
+        alamat: document.getElementById("residence").value + 
+                " | Landlord: " + document.getElementById("landlord").value,
+        alasan: document.getElementById("experience").value
+    };
+
+    // Ambil data lama
+    let stored = JSON.parse(localStorage.getItem("adoption_submissions")) || [];
+
+    // Tambahkan data baru
+    stored.push(newData);
+
+    // Simpan kembali
+    localStorage.setItem("adoption_submissions", JSON.stringify(stored));
+
+    // Notifikasi sukses
+    alert("Form berhasil dikirim! Data adopsi telah disimpan.");
+
+    // Kosongkan form
+    event.target.reset();
+});
+</script>
+
+</body>
+</html>
+
+<body>
+
+    <div class="adoption-page-wrapper">
+        
+        <header class="adopt-header">
+            <a href="index.html" class="back-home-link">&lt; Back to Home</a>
+            <div class="logo">PawHouse</div>
+        </header>
+
+        <section class="adoption-form-container">
+            <h1 class="main-title">Start Your Adoption Journey</h1>
+            <p class="subtitle">Please fill out this brief form so we can get to know you and your home better. Fields marked with (*) are required.</p>
+            
+            <form class="adopt-form">
+                
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="fullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="emailAddress" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phoneNumber" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="residence">Type of Residence *</label>
+                    <select id="residence" name="residenceType" required>
+                        <option value="">Select your home type</option>
+                        <option value="house">Single-Family House</option>
+                        <option value="apartment">Apartment/Condo</option>
+                        <option value="townhouse">Townhouse</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="landlord">Landlord/HOA Contact (If renting)</label>
+                    <input type="text" id="landlord" name="landlordContact" placeholder="Name and phone number">
+                </div>
+
+                <div class="form-group">
+                    <label for="petInterest">Preferred Pet Type *</label>
+                    <select id="petInterest" name="petInterest" required>
+                        <option value="">Select pet type</option>
+                        <option value="dog">Dog</option>
+                        <option value="cat">Cat</option>
+                        <option value="no_preference">No Preference</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="experience">Prior Pet Experience</label>
+                    <textarea id="experience" name="petExperience" rows="4" placeholder="Tell us about your past experience with pets, existing pets, and if your pets are spayed/neutered..."></textarea>
+                </div>
+
+                <div class="form-group checkbox-group full-width">
+                    <input type="checkbox" id="agreement" name="agreement" required>
+                    <label for="agreement">I confirm that all information is truthful and I agree to a home visit as part of the adoption process. *</label>
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit Adoption Application</button>
+
+            </form>
+        </section>
+
+        <footer class="adopt-footer">
+            <p>&copy; 2025 PawHouse. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
