@@ -1,30 +1,33 @@
+import { supabase } from "./supabase.js";
+
 // Menangani submit form
-document.getElementById("adoptForm").addEventListener("submit", function(e) {
+document.getElementById("adoptForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
     // Ambil semua data form
-    const formData = new FormData(this);
-    const data = {};
+    const data = {
+        fullName: document.getElementById("name").value,
+        emailAddress: document.getElementById("email").value,
+        phoneNumber: document.getElementById("phone").value,
+        residenceType: document.getElementById("residence").value,
+        landlordContact: document.getElementById("landlord").value,
+        petInterest: document.getElementById("petInterest").value,
+        petExperience: document.getElementById("experience").value,
+        agreement: document.getElementById("agreement").checked
+    };
 
-    formData.forEach((value, key) => {
-        data[key] = value;
-    });
+    const { error } = await supabase.from("adoption").insert([data]);
 
-    // Ambil data lama dari localStorage
-    const saved = JSON.parse(localStorage.getItem("adoption_submissions")) || [];
+    if (error) {
+        alert("❌ Gagal menyimpan ke database Supabase!");
+        console.error(error);
+        return;
+    }
 
-    // Tambahkan data baru
-    saved.push(data);
-
-    // Simpan lagi
-    localStorage.setItem("adoption_submissions", JSON.stringify(saved));
-
-    // Notifikasi sukses
-    showNotification("Data adopsi berhasil dikirim!");
-
-    // Reset form
-    this.reset();
+    alert("✔ Berhasil tersimpan ke Supabase!");
+    event.target.reset();
 });
+
 
 // Fungsi menampilkan notifikasi
 function showNotification(message) {
